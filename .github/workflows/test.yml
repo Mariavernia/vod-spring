@@ -25,7 +25,7 @@ jobs:
       - name: Sonar
         if: success() # always() failure() success()
       run: >
-          mvn -B verify -DskipTests sonar:sonar
+        mvn -B verify -DskipTests sonar:sonar
           -Dsonar.projectKey=Mariavernia_vod-spring
           -Dsonar.organization=mariavernia
           -Dsonar.host.url=https://sonarcloud.io
