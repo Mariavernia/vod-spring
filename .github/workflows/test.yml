@@ -23,8 +23,8 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
       - name: Sonar
-      if: success() # always() failure() success()
-        run: >
+        if: success() # always() failure() success()
+      run: >
           mvn -B verify -DskipTests sonar:sonar
           -Dsonar.projectKey=Mariavernia_vod-spring
           -Dsonar.organization=mariavernia
