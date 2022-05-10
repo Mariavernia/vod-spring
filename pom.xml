@@ -12,7 +12,7 @@
 	<artifactId>vod-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>vod-spring</name>
-	<description>Master's tesis of Maria Vernia</description>
+	<description>Tesis of Maria Vernia</description>
 	<properties>
 		<!-- Encode -->
 		<encoding>UTF-8</encoding>
