@@ -35,7 +35,7 @@ public class UserResourceIT {
                 .uri(USERS)
                 .body(BodyInserters.fromValue(userDto))
                 .exchange()
-                .expectStatus().isOk()
+                .expectStatus().isForbidden()
                 .expectBody(UserDto.class)
                 .value(Assertions::assertNotNull);
     }
