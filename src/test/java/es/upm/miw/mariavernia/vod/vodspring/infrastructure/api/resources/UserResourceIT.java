@@ -36,9 +36,9 @@ public class UserResourceIT {
                 .body(BodyInserters.fromValue(userDto))
                 .exchange()
                 .expectStatus()
-                //.isForbidden();
-                .isOk()
-                .expectBody(UserDto.class)
-                .value(Assertions::assertNotNull);
+                .isBadRequest();
+                //.isOk()
+                //.expectBody(UserDto.class)
+                //.value(Assertions::assertNotNull);
     }
 }

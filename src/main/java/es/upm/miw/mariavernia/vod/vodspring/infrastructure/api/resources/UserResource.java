@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 import javax.validation.Valid;
 import java.util.Optional;
 
-@PostAuthorize("hasRole('ADMIN') or hasRole('STUDENT') or hasRole('PROFESSOR')")
+@PreAuthorize("hasRole('ADMIN') or hasRole('STUDENT') or hasRole('PROFESSOR')")
 @RestController
 @RequestMapping(UserResource.USERS)
 public class UserResource {
@@ -30,7 +30,7 @@ public class UserResource {
     }
 
     @SecurityRequirement(name = "bearerAuth")
-    @PostAuthorize("authenticated")
+    //@PostAuthorize("authenticated")
     @PostMapping
     public Mono<UserDto> create(@Valid @RequestBody UserDto userDto) {
         return this.userService.create(userDto)
@@ -39,7 +39,7 @@ public class UserResource {
 
     @SecurityRequirement(name = "basicAuth")
     @PreAuthorize("authenticated")
-    @PostAuthorize(TOKEN)
+    @PostMapping(TOKEN)
     public Mono<TokenDto> login(@AuthenticationPrincipal UserDto user) {
         return userService.login(user)
                 .map(TokenDto::new);
