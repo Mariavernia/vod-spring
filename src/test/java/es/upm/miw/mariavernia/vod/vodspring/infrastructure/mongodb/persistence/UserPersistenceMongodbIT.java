@@ -34,4 +34,19 @@ public class UserPersistenceMongodbIT {
                })
                .verifyComplete();
    }
+
+   @Test
+    void testLogin() {
+       User user = User.builder()
+               .firstName("Maria")
+               .familyName("Garcia")
+               .email("mariagarcia_email@upm.es")
+               .password("contra123")
+               .role(Role.PROFESSOR)
+               .active(true)
+               .build();
+       StepVerifier
+               .create(this.userPersistenceMongodb.login(user))
+               .expectComplete();
+   }
 }
