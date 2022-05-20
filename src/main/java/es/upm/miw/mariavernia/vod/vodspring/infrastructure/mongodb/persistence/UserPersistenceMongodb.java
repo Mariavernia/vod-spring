@@ -1,5 +1,6 @@
 package es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.persistence;
 
+import es.upm.miw.mariavernia.vod.vodspring.configuration.JwtService;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.User;
 import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.UserPersistence;
 import es.upm.miw.mariavernia.vod.vodspring.domain.exceptions.ConflictException;
@@ -12,9 +13,11 @@ import reactor.core.publisher.Mono;
 public class UserPersistenceMongodb implements UserPersistence {
 
     private final UserReactive userReactive;
+    private final JwtService jwtService;
 
-    public UserPersistenceMongodb(UserReactive userReactive) {
+    public UserPersistenceMongodb(UserReactive userReactive, JwtService jwtService) {
         this.userReactive = userReactive;
+        this.jwtService = jwtService;
     }
 
     @Override
@@ -25,11 +28,19 @@ public class UserPersistenceMongodb implements UserPersistence {
                         .map(UserEntity::toUser));
     }
 
+    @Override
+    public Mono<String> login(User user) {
+        return this.userReactive.findByEmail(user.getEmail())
+                .map(userEntity -> jwtService.createToken(user.getEmail(), user.getFirstName(), user.getRole().toString()));
+    }
+
     private Mono<Void> assertUserNotExist(String email) {
         return this.userReactive.findByEmail(email)
                 .flatMap(userEntity -> Mono.error(
                         new ConflictException("Already exist user with email: " + email)
                         ));
     }
+
+
 
 }
