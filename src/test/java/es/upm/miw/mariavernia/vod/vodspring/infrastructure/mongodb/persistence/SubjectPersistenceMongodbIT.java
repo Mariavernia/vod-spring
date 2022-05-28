@@ -16,7 +16,7 @@ public class SubjectPersistenceMongodbIT {
 
     @Autowired
     private SubjectPersistenceMongodb subjectPersistenceMongodb;
-
+/*
     @Test
     void testCreate() {
         Subject subject = Subject.builder()
@@ -47,5 +47,5 @@ public class SubjectPersistenceMongodbIT {
                 .create(this.subjectPersistenceMongodb.readAll())
                 .verifyComplete();
 
-    }
+    }*/
 }
