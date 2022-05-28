@@ -9,12 +9,15 @@ import reactor.test.StepVerifier;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestConfig
+    @TestConfig
 public class UserServiceIT {
 
+        /*
     @Autowired
     UserService userService;
-    /*
+
+
+
     @Test
     void testCreate() {
         UserDto userDto = UserDto.builder()
@@ -28,9 +31,10 @@ public class UserServiceIT {
         StepVerifier
                 .create(this.userService.create(userDto))
                 .expectNextMatches(dbUser -> {
-                    assert;
+                    assertEquals("Maria", dbUser.getFirstName());
                     return true;
                 })
                 .verifyComplete();
     }*/
-}
+    }
+

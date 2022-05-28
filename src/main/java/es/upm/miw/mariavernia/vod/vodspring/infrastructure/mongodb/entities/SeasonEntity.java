@@ -18,5 +18,5 @@ public class SeasonEntity {
     @Id
     private int id;
     private String name;
-    private List<VideoEntity> videos;
+    private SubjectEntity subjects;
 }
