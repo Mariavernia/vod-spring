@@ -1,14 +1,18 @@
 package es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.entities;
 
+import es.upm.miw.mariavernia.vod.vodspring.domain.model.Subject;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Data
@@ -18,9 +22,19 @@ import java.util.List;
 @Document
 public class SubjectEntity {
     @Id
-    private int id;
+    private String id;
+    private String reference;
     private String name;
     private String description;
-    private List<SeasonEntity> seasons;
-    private List<User> authors;
+    private String authors;
+
+    public SubjectEntity(Subject subject) {
+        BeanUtils.copyProperties(subject, this);
+    }
+
+    public Subject toSubject() {
+        Subject subject = new Subject();
+        BeanUtils.copyProperties(this, subject);
+        return subject;
+    }
 }

@@ -16,11 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Subject {
-    @Id
-    @GeneratedValue
-    private int id;
+    private String reference;
     private String name;
     private String description;
-    private List<Season> seasons;
-    private List<Author> authors;
+    private String authors;
 }

@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.GeneratedValue;
-import java.util.List;
 
 @Builder
 @Data //@ToString, @EqualsAndHashCode, @Getter, @Setter, @RequiredArgsConstructor
@@ -20,5 +19,5 @@ public class Season {
     @GeneratedValue
     private int id;
     private String name;
-    private List<Video> videos;
+    private Subject subject;
 }

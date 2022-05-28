@@ -23,4 +23,5 @@ public class Video {
     private String description;
     @NotNull
     private String link;
+    private Season season;
 }

@@ -19,6 +19,7 @@ import java.util.Objects;
 public class UserEntity {
     @Id
     private int id;
+    private String reference;
     private String firstName;
     private String familyName;
     private String email;

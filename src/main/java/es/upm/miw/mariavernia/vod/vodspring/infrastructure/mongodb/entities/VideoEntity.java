@@ -16,7 +16,9 @@ import javax.persistence.Id;
 public class VideoEntity {
     @Id
     private int id;
+    private String reference;
     private String name;
     private String description;
     private String link;
+    private SeasonEntity seasons;
 }
