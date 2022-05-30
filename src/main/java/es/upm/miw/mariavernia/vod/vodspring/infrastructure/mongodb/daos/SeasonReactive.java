@@ -6,5 +6,5 @@ import org.springframework.data.repository.reactive.ReactiveSortingRepository;
 import reactor.core.publisher.Mono;
 
 public interface SeasonReactive extends ReactiveSortingRepository<SeasonEntity, String> {
-    Mono<Season> findByReference(String reference);
+    Mono<SeasonEntity> findByReference(String reference);
 }

@@ -7,4 +7,6 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface SeasonPersistence {
     Mono<Season> create(Season season);
+
+    Mono<Season> readByReference(String seasonReference);
 }

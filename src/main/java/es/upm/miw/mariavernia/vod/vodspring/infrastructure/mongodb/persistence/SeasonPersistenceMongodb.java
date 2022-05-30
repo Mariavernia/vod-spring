@@ -26,6 +26,12 @@ public class SeasonPersistenceMongodb implements SeasonPersistence {
                         .map(SeasonEntity::toSeason));
     }
 
+    @Override
+    public Mono<Season> readByReference(String seasonReference) {
+        return this.seasonReactive.findByReference(seasonReference)
+                .map(SeasonEntity::toSeason);
+    }
+
     private Mono<Void> assertSeasonNotExist(String reference) {
         return this.seasonReactive.findByReference(reference)
                 .flatMap( seasonEntity -> Mono.error(
