@@ -6,7 +6,10 @@ import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SubjectPersistenc
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @Service
 public class SeasonService {
@@ -37,5 +40,10 @@ public class SeasonService {
                     season.setSubject(subject);
                     return season;
                 });
+    }
+
+    public Flux<List<String>> findAllReferences() {
+        return this.seasonPersistence.findAllReferences()
+                .distinct();
     }
 }
