@@ -8,7 +8,9 @@ import org.springframework.web.reactive.function.BodyInserters;
 
 @RestTestConfig
 public class SeasonResourceIT {
+
     public static final String SEASON = "/season";
+    public static final String REFERENCE = "/reference";
 
     @Autowired
     private WebTestClient webTestClient;
@@ -27,6 +29,16 @@ public class SeasonResourceIT {
                 .exchange()
                 .expectStatus()
                 .is5xxServerError();
+    }
+
+    @Test
+    void testFindAllReferences() {
+        this.webTestClient
+                .get()
+                .uri(SEASON + REFERENCE)
+                .exchange()
+                .expectStatus()
+                .isOk();
     }
 
 }

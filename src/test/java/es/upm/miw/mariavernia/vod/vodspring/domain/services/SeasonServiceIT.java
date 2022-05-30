@@ -24,4 +24,11 @@ public class SeasonServiceIT {
                 .expectError()
                 .verify();
     }
+
+    @Test
+    void testFindAllReferences() {
+        StepVerifier
+                .create(this.seasonService.findAllReferences())
+                .expectComplete();
+    }
 }
