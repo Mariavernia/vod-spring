@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import reactor.test.StepVerifier;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestConfig
@@ -33,5 +30,12 @@ public class SubjectServiceIT {
                     return true;
                 })
                 .verifyComplete();
+    }
+
+    @Test
+    void testFindAllReferences() {
+        StepVerifier
+                .create(this.subjectService.findAllReferences())
+                .expectComplete();
     }
 }

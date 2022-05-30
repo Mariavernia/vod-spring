@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @Service
 public class SubjectService {
 
@@ -26,7 +28,11 @@ public class SubjectService {
         subject.setReference(subjectDto.getReference());
         subject.setDescription(subjectDto.getDescription());
         subject.setAuthors(subjectDto.getAuthors());
-        System.out.println("Subject in service:" + subject);
         return this.subjectPersistence.create(subject);
+    }
+
+    public Flux<List<String>> findAllReferences() {
+        return this.subjectPersistence.findAllReferences()
+                .distinct();
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
@@ -20,5 +21,6 @@ public class VideoEntity {
     private String name;
     private String description;
     private String link;
+    @DBRef
     private SeasonEntity seasons;
 }
