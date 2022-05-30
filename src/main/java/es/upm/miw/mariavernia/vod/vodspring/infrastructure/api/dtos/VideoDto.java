@@ -2,10 +2,12 @@ package es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import es.upm.miw.mariavernia.vod.vodspring.domain.model.Video;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 @Data
 @NoArgsConstructor
@@ -17,4 +19,9 @@ public class VideoDto {
     private String description;
     private String link;
     private String seasonReference;
+
+    public VideoDto(Video video){
+        BeanUtils.copyProperties(video, this);
+        this.seasonReference = video.getSeason().getReference();
+    }
 }
