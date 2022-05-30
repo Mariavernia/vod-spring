@@ -2,16 +2,11 @@ package es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.Subject;
-import es.upm.miw.mariavernia.vod.vodspring.domain.model.User;
-import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.entities.SeasonEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
-
-import javax.persistence.Id;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

@@ -6,5 +6,6 @@ import reactor.core.publisher.Mono;
 
 public interface SubjectReactive extends ReactiveSortingRepository<SubjectEntity, String> {
 
-    Mono<Void> findByReference(String reference);
+    Mono<SubjectEntity> findByReference(String reference);
+
 }

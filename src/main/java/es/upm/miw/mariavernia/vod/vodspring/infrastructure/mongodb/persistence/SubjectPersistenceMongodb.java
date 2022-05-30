@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class SubjectPersistenceMongodb implements SubjectPersistence {
 
@@ -30,6 +33,22 @@ public class SubjectPersistenceMongodb implements SubjectPersistence {
         return this.assertSubjectNotExist(subject.getReference())
                 .then(this.subjectReactive.save(subjectEntity)
                         .map(SubjectEntity::toSubject));
+    }
+
+    @Override
+    public Mono<Subject> readByReference(String reference) {
+        return this.subjectReactive.findByReference(reference)
+                .map(SubjectEntity::toSubject);
+    }
+
+    @Override
+    public Flux<List<String>> findAllReferences() {
+        List<String> references = new ArrayList<>();
+        return this.subjectReactive.findAll()
+                .map(subjectEntity -> {
+                    references.add(subjectEntity.getReference());
+                    return references;
+                });
     }
 
     private Mono<Void> assertSubjectNotExist(String reference) {

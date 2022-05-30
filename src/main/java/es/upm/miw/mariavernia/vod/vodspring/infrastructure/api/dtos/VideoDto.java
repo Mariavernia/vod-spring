@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class VideoDto {
-    private String reference;
     private String name;
     private String description;
-    private SeasonDto season;
+    private String link;
+    private String seasonReference;
 }

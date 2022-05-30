@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.GeneratedValue;
 
 @Builder
 @Data //@ToString, @EqualsAndHashCode, @Getter, @Setter, @RequiredArgsConstructor
@@ -15,9 +12,7 @@ import javax.persistence.GeneratedValue;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Season {
-    @Id
-    @GeneratedValue
-    private int id;
+    private String reference;
     private String name;
     private Subject subject;
 }
