@@ -16,12 +16,9 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Video {
-    @Id
-    @GeneratedValue
-    private int id;
     private String name;
     private String description;
     @NotNull
     private String link;
-    private Season season;
+    private String seasonReference;
 }

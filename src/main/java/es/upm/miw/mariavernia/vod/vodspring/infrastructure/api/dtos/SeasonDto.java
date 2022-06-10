@@ -20,6 +20,5 @@ public class SeasonDto {
 
     public SeasonDto(Season season){
         BeanUtils.copyProperties(season, this);
-        this.subjectReference = season.getSubject().getReference();
     }
 }

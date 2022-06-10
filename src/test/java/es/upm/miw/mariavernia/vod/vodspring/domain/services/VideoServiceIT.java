@@ -5,6 +5,7 @@ import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.VideoDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import reactor.test.StepVerifier;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestConfig
 public class VideoServiceIT {
@@ -20,10 +21,12 @@ public class VideoServiceIT {
                 .link("Link del video")
                 .seasonReference("VTFY5")
                 .build();
-
         StepVerifier
                 .create(this.videoService.create(videoDto))
-                .expectError()
-                .verify();
+                .expectNextMatches(video -> {
+                    assertEquals(videoDto.getName(), video.getName());
+                    return true;
+                })
+                .verifyComplete();
     }
 }

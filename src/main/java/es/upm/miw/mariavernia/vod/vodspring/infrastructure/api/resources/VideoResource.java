@@ -28,4 +28,5 @@ public class VideoResource {
         return this.videoService.create(videoDto)
                 .map(VideoDto::new);
     }
+
 }

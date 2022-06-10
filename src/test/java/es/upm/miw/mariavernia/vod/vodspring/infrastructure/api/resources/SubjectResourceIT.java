@@ -15,7 +15,8 @@ public class SubjectResourceIT {
     public static final String SUBJECT = "/subject";
     public static final String SEARCH = "/search";
     public static final String REFERENCE = "/reference";
-
+    public static final String REFERENCE_ID = "/{reference}";
+    public static final String SEASON = "/season";
     @Test
     void testCreate() {
         SubjectDto subject = SubjectDto.builder()
@@ -53,6 +54,18 @@ public class SubjectResourceIT {
                 .exchange()
                 .expectStatus()
                 .isOk();
+    }
+
+    @Test
+    void testFindAllSeasonsBySubject() {
+        String reference = "613000095";
+
+        this.webTestClient
+                .get()
+                .uri(SUBJECT + '/' + reference  + SEASON)
+                .exchange()
+                .expectStatus()
+                .is5xxServerError();
     }
 
 }

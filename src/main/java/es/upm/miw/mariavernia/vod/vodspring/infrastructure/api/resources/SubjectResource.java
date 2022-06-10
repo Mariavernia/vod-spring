@@ -1,6 +1,8 @@
 package es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.resources;
 
+import es.upm.miw.mariavernia.vod.vodspring.domain.model.Season;
 import es.upm.miw.mariavernia.vod.vodspring.domain.services.SubjectService;
+import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SubjectDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +18,10 @@ public class SubjectResource{
     public static final String SUBJECT = "/subject";
     public static final String SEARCH = "/search";
     public static final String REFERENCE = "/reference";
+    public static final String REFERENCE_ID = "/{reference}";
+    public static final String SEASON = "/season";
 
-    private SubjectService subjectService;
+    private final SubjectService subjectService;
 
     @Autowired
     public SubjectResource(SubjectService subjectService) {
@@ -43,6 +47,9 @@ public class SubjectResource{
         return this.subjectService.findAllReferences();
     }
 
-
+    @GetMapping(REFERENCE_ID + SEASON)
+    public Flux<SeasonDto> findAllSeasonsBySubject(@PathVariable String reference) {
+        return this.subjectService.findAllSeasonsBySubject(reference);
+    }
 
 }

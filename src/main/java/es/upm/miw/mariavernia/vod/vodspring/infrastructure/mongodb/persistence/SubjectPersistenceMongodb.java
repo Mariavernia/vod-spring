@@ -6,6 +6,7 @@ import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SubjectPersistenc
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.daos.SubjectReactive;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.entities.SubjectEntity;
 import org.springframework.stereotype.Repository;
+import org.webjars.NotFoundException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -38,6 +39,7 @@ public class SubjectPersistenceMongodb implements SubjectPersistence {
     @Override
     public Mono<Subject> readByReference(String reference) {
         return this.subjectReactive.findByReference(reference)
+                .switchIfEmpty(Mono.error(new NotFoundException("Subject does not exist: " + reference)))
                 .map(SubjectEntity::toSubject);
     }
 
@@ -50,6 +52,7 @@ public class SubjectPersistenceMongodb implements SubjectPersistence {
                     return references;
                 });
     }
+
 
     private Mono<Void> assertSubjectNotExist(String reference) {
         return this.subjectReactive.findByReference(reference)

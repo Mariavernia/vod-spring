@@ -28,7 +28,7 @@ public class VideoResourceIT {
                 .body(BodyInserters.fromValue(videoDto))
                 .exchange()
                 .expectStatus()
-                .is5xxServerError();
+                .isOk();
     }
 
 

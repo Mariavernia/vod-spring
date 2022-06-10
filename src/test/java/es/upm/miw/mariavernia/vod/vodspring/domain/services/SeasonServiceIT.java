@@ -5,6 +5,7 @@ import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import reactor.test.StepVerifier;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestConfig
 public class SeasonServiceIT {
@@ -21,8 +22,11 @@ public class SeasonServiceIT {
                 .build();
         StepVerifier
                 .create(this.seasonService.create(seasonDto))
-                .expectError()
-                .verify();
+                .expectNextMatches(season -> {
+                    assertEquals(seasonDto.getName(), season.getName());
+                    return true;
+                })
+                .verifyComplete();
     }
 
     @Test

@@ -24,11 +24,13 @@ public class VideoService {
         video.setName(videoDto.getName());
         video.setDescription(videoDto.getDescription());
         video.setLink(videoDto.getLink());
-        Mono<Void> seasonMono = this.setSeason(video, videoDto.getSeasonReference()).then();
-        return Mono.when(seasonMono)
-                .then(this.videoPersistence.create(video));
+        //Mono<Void> seasonMono = this.setSeason(video, videoDto.getSeasonReference()).then();
+        /*return Mono.when(seasonMono)
+                .then(this.videoPersistence.create(video));*/
+        video.setSeasonReference(videoDto.getSeasonReference());
+        return this.videoPersistence.create(video);
     }
-
+/*
     private Mono<Video> setSeason(Video video, String seasonReference) {
         return this.seasonPersistence.readByReference(seasonReference)
                 .switchIfEmpty(Mono.error(
@@ -38,6 +40,6 @@ public class VideoService {
                     video.setSeason(season);
                     return video;
                 });
-    }
+    }*/
 
 }

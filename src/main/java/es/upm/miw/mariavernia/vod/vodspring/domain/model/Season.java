@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class Season {
     private String reference;
     private String name;
-    private Subject subject;
+    private String subjectReference;
 }

@@ -21,8 +21,7 @@ public class SeasonEntity {
     private String id;
     private String reference;
     private String name;
-    @DBRef
-    private SubjectEntity subjects;
+    private String subjectReference;
 
     public SeasonEntity(Season season){
         BeanUtils.copyProperties(season,this);

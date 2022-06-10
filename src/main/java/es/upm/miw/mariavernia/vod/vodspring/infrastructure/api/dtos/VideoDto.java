@@ -22,6 +22,5 @@ public class VideoDto {
 
     public VideoDto(Video video){
         BeanUtils.copyProperties(video, this);
-        this.seasonReference = video.getSeason().getReference();
     }
 }

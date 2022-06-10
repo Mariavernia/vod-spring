@@ -11,12 +11,13 @@ public class SeasonResourceIT {
 
     public static final String SEASON = "/season";
     public static final String REFERENCE = "/reference";
+    public static final String VIDEO = "/video";
 
     @Autowired
     private WebTestClient webTestClient;
 
     @Test
-    void testCreateIsServerError() {
+    void testCreateIsOK() {
         SeasonDto seasonDto = SeasonDto.builder()
                 .reference("SUB2016")
                 .name("2016")
@@ -28,7 +29,7 @@ public class SeasonResourceIT {
                 .body(BodyInserters.fromValue(seasonDto))
                 .exchange()
                 .expectStatus()
-                .is5xxServerError();
+                .isOk();
     }
 
     @Test
@@ -39,6 +40,16 @@ public class SeasonResourceIT {
                 .exchange()
                 .expectStatus()
                 .isOk();
+    }
+    @Test
+    void testFindVideosBySeasonReference() {
+        String reference = " 1516IWVG";
+        this.webTestClient
+                .get()
+                .uri(SEASON + '/' + reference  + VIDEO)
+                .exchange()
+                .expectStatus()
+                .is5xxServerError();
     }
 
 }

@@ -1,21 +1,29 @@
 package es.upm.miw.mariavernia.vod.vodspring.domain.services;
 
+import es.upm.miw.mariavernia.vod.vodspring.domain.exceptions.ConflictException;
+import es.upm.miw.mariavernia.vod.vodspring.domain.model.Season;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.Subject;
+import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SeasonPersistence;
 import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SubjectPersistence;
+import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SubjectDto;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.function.Function;
 
 @Service
 public class SubjectService {
 
     private final SubjectPersistence subjectPersistence;
+    private final SeasonPersistence seasonPersistence;
 
-    public SubjectService(SubjectPersistence subjectPersistence) {
+    public SubjectService(SubjectPersistence subjectPersistence, SeasonPersistence seasonPersistence) {
         this.subjectPersistence = subjectPersistence;
+        this.seasonPersistence = seasonPersistence;
     }
 
     public Flux<Subject> findAllSubject() {
@@ -35,4 +43,10 @@ public class SubjectService {
         return this.subjectPersistence.findAllReferences()
                 .distinct();
     }
+
+    public Flux<SeasonDto> findAllSeasonsBySubject(String reference) {
+        return this.seasonPersistence.findBySubjectReference(reference)
+                .distinct();
+    }
+
 }

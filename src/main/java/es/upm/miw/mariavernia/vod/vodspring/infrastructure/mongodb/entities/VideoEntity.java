@@ -18,13 +18,12 @@ import javax.persistence.Id;
 @Document
 public class VideoEntity {
     @Id
-    private int id;
+    private String id;
     private String reference;
     private String name;
     private String description;
     private String link;
-    @DBRef
-    private SeasonEntity seasons;
+    private String seasonReference;
 
     public VideoEntity(Video video) {
         BeanUtils.copyProperties(video, this);
