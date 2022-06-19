@@ -8,6 +8,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class UserService {
+
     private final UserPersistence userPersistence;
 
     public UserService(UserPersistence userPersistence) {
@@ -18,8 +19,9 @@ public class UserService {
         User user = userDto.toUser();
         return this.userPersistence.create(user);
     }
-    public Mono<String> login(UserDto userDto) {
-        User user = userDto.toUser();
-        return this.userPersistence.login(user);
+
+    public Mono<String> login(String email) {
+        System.out.println("USER DTO: " + email);
+        return this.userPersistence.login(email);
     }
 }

@@ -4,6 +4,10 @@ import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.entities.User
 import org.springframework.data.repository.reactive.ReactiveSortingRepository;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
+
 public interface UserReactive extends ReactiveSortingRepository<UserEntity, String> {
-    Mono<Object> findByEmail(String email);
+    Mono<UserEntity> findByEmail(String email);
+
+    Mono<UserEntity> findByFirstName(String firstName);
 }

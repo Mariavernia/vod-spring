@@ -8,7 +8,6 @@ import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SubjectPersistenc
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SubjectDto;
 import org.springframework.stereotype.Service;
-import org.webjars.NotFoundException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

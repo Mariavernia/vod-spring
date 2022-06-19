@@ -6,7 +6,8 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface UserPersistence {
+
     Mono<User> create(User user);
 
-    Mono<String> login(User user);
+    Mono<String> login(String email);
 }

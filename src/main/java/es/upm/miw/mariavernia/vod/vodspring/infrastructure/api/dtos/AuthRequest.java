@@ -1,29 +1,24 @@
-package es.upm.miw.mariavernia.vod.vodspring.domain.model;
+package es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import es.upm.miw.mariavernia.vod.vodspring.domain.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Builder
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class User {
-    private String firstName;
-    private String familyName;
+public class AuthRequest {
     @NotNull
+    @NotBlank
     private String email;
-    @NotNull
     private String password;
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    private Boolean active;
 
 }

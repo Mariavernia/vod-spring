@@ -22,19 +22,15 @@ import java.util.Objects;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
-    @NotNull
-    @NotBlank
-    @Pattern(regexp = Validations.NINE_DIGITS)
-    private String mobile;
-    @NotNull
-    @NotBlank
+
     private String firstName;
     private String familyName;
+    @NotNull
+    @NotBlank
     private String email;
     private String password;
     private Role role;
     private Boolean active;
-    private LocalDateTime registrationDate;
 
     public UserDto(User user) {
         BeanUtils.copyProperties(user, this);
