@@ -21,7 +21,6 @@ public class UserService {
     }
 
     public Mono<String> login(String email) {
-        System.out.println("USER DTO: " + email);
         return this.userPersistence.login(email);
     }
 }

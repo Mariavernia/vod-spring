@@ -7,7 +7,6 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.Date;
 import java.util.Optional;
@@ -40,7 +39,6 @@ public class JwtService {
     }
 
     public String createToken(String email, String name, String role) {
-        System.out.println("HA ENTRADOOOOO");
         return JWT.create()
                 .withIssuer(this.issuer)
                 .withIssuedAt(new Date())

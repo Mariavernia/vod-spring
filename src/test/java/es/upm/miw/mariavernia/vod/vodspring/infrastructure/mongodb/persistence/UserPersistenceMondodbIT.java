@@ -3,7 +3,6 @@ package es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.persistence;
 import es.upm.miw.mariavernia.vod.vodspring.TestConfig;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.Role;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.User;
-import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.AuthRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import reactor.test.StepVerifier;
@@ -32,19 +31,5 @@ public class UserPersistenceMondodbIT {
                 })
                 .verifyComplete();
     }
-/*
-    @Test
-    void testLogin() {
-        AuthRequest user = AuthRequest.builder()
-                .email("test1@test1.com")
-                .password("maria1234")
-                .build();
-        StepVerifier
-                .create(this.userPersistenceMongodb.login(user.getEmail()))
-                .expectNextMatches(token -> {
-                    assertNotNull(token);
-                    return true;
-                })
-                .verifyComplete();
-    }*/
+
 }
