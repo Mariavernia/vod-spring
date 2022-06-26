@@ -2,13 +2,10 @@ package es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.persistence;
 
 import es.upm.miw.mariavernia.vod.vodspring.domain.exceptions.ConflictException;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.Season;
-import es.upm.miw.mariavernia.vod.vodspring.domain.model.Subject;
 import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SeasonPersistence;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.daos.SeasonReactive;
-import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.daos.SubjectReactive;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.entities.SeasonEntity;
-import es.upm.miw.mariavernia.vod.vodspring.infrastructure.mongodb.entities.SubjectEntity;
 import org.springframework.stereotype.Repository;
 import org.webjars.NotFoundException;
 import reactor.core.publisher.Flux;

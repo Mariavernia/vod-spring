@@ -30,7 +30,6 @@ public class SubjectPersistenceMongodb implements SubjectPersistence {
     @Override
     public Mono<Subject> create(Subject subject) {
         SubjectEntity subjectEntity = new SubjectEntity(subject);
-        System.out.println("Subject in mongo:" + subjectEntity);
         return this.assertSubjectNotExist(subject.getReference())
                 .then(this.subjectReactive.save(subjectEntity)
                         .map(SubjectEntity::toSubject));

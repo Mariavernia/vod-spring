@@ -1,6 +1,5 @@
 package es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.resources;
 
-import es.upm.miw.mariavernia.vod.vodspring.domain.model.Season;
 import es.upm.miw.mariavernia.vod.vodspring.domain.services.SubjectService;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SubjectDto;
@@ -37,7 +36,6 @@ public class SubjectResource{
 
     @PostMapping(produces = {"application/json"})
     Mono<SubjectDto> create(@Valid @RequestBody SubjectDto subjectDto){
-        System.out.println("Autores: " + subjectDto.getAuthors());
         return this.subjectService.create(subjectDto)
                 .map(SubjectDto::new);
 

@@ -16,23 +16,4 @@ public class UserResourceIT {
     @Autowired
     private WebTestClient webTestClient;
 
-    @Test
-    void testCreateIsOK() {
-        UserDto userDto = UserDto.builder()
-                .firstName("maria")
-                .familyName("maria2")
-                .email("maria@maria.es")
-                .password("maria")
-                .role(Role.PROFESSOR)
-                .active(true)
-                .build();
-
-        this.webTestClient
-                .post()
-                .uri(USER)
-                .body(BodyInserters.fromValue(userDto))
-                .exchange()
-                .expectStatus()
-                .isOk();
-    }
 }

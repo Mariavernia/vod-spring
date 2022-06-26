@@ -31,7 +31,6 @@ public class UserPersistenceMongodb implements UserPersistence {
 
     @Override
     public Mono<String> login(String email) {
-        System.out.println("USER MONGO: " + email);
         return this.userReactive.findByEmail(email)
                 .switchIfEmpty(
                         Mono.error(new NotFoundException("User does not exist: " + email))

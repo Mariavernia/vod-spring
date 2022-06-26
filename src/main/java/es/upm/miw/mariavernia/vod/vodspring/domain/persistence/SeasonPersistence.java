@@ -1,9 +1,7 @@
 package es.upm.miw.mariavernia.vod.vodspring.domain.persistence;
 
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.Season;
-import es.upm.miw.mariavernia.vod.vodspring.domain.model.Subject;
 import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.SeasonDto;
-import es.upm.miw.mariavernia.vod.vodspring.infrastructure.api.dtos.VideoDto;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

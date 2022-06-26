@@ -1,7 +1,5 @@
 package es.upm.miw.mariavernia.vod.vodspring.domain.services;
 
-import es.upm.miw.mariavernia.vod.vodspring.domain.exceptions.ConflictException;
-import es.upm.miw.mariavernia.vod.vodspring.domain.model.Season;
 import es.upm.miw.mariavernia.vod.vodspring.domain.model.Subject;
 import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SeasonPersistence;
 import es.upm.miw.mariavernia.vod.vodspring.domain.persistence.SubjectPersistence;
@@ -12,7 +10,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.function.Function;
 
 @Service
 public class SubjectService {
