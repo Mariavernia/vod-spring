@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Builder
@@ -17,7 +19,7 @@ public class SubjectDto {
     private String reference;
     private String name;
     private String description;
-    private String authors;
+    private List<String> authors;
 
     public SubjectDto(Subject subject){
         BeanUtils.copyProperties(subject, this);

@@ -19,5 +19,5 @@ public class Subject {
     private String reference;
     private String name;
     private String description;
-    private String authors;
+    private List<String> authors;
 }

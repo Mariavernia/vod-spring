@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
+import java.util.List;
 
 
 @Data
@@ -24,7 +25,7 @@ public class SubjectEntity {
     private String reference;
     private String name;
     private String description;
-    private String authors;
+    private List<String> authors;
 
     public SubjectEntity(Subject subject) {
         BeanUtils.copyProperties(subject, this);

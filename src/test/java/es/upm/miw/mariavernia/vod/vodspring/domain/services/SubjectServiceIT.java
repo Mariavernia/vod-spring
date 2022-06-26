@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import reactor.test.StepVerifier;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestConfig
@@ -16,12 +19,13 @@ public class SubjectServiceIT {
 
     @Test
     void testCreate() {
+        List<String> authors = Arrays.asList("Author 1", "Author 2");
 
         SubjectDto subjectDto = SubjectDto.builder()
                 .reference("RefTest1")
                 .name("Test1")
                 .description("test description")
-                .authors("author1")
+                .authors(authors)
                 .build();
         StepVerifier
                 .create(this.subjectService.create(subjectDto))

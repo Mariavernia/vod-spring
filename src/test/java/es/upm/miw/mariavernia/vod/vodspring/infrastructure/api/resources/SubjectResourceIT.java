@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 
+import java.util.*;
+
 @RestTestConfig
 public class SubjectResourceIT {
 
@@ -19,11 +21,12 @@ public class SubjectResourceIT {
     public static final String SEASON = "/season";
     @Test
     void testCreate() {
+        List<String> authors = Arrays.asList("Author 1", "Author 2");
         SubjectDto subject = SubjectDto.builder()
                 .reference("sub1")
                 .name("Subject 1")
                 .description("Description subject 1")
-                .authors("Author 1")
+                .authors(authors)
                 .build();
 
         this.webTestClient
